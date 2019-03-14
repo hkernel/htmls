@@ -1,0 +1,35 @@
+<DOCTYPE html>
+<HTML>
+<HEAD> 
+    <meta charset="utf-8">
+</HEAD>
+<BODY>
+
+<input type="button" value="clickme" onclick="getone();"/>
+
+<script>
+if("serviceworker" in navigator){
+	navigator.serviceworker.register('sw.js');
+	console.log("service worker registered successfully");
+	
+	navigator.serviceWorker.ready.then(reload);
+}else{
+	console.log("service worker not installed");
+}
+
+function getone(){
+	var img_ = document.createElement("img");
+	img_.src = images[i++%3];
+	img_.width = 500;
+	document.body.append(img_);
+	console.log('fetched image '+i);
+}
+var i=0;
+
+var images = ["http://img.over-blog-kiwi.com/0/88/53/22/20140109/ob_d24b92_facebook-illuminati1.png",
+              "http://ax2b.net//clients/1_PRN_News//20190128021235_814113-hook-messenger-ts.jpg",
+              "http://ax2b.net//clients/1_PRN_News//20190125111117_813581-Tempur-Sealy-LuxEstate-HR-ts.jpg"
+              ]
+</script>
+</BODY>
+</HTML>
